@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MMO 项目</title>
+  <style>
+    :root { --bg:#f4f6f8; --panel:#fff; --text:#15171a; --muted:#66707c; --line:#d8dde3; --accent:#2457ff; }
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}
+    header{padding:24px 20px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff 0%,#fafbfd 100%)} .wrap{max-width:980px;margin:0 auto}
+    h1{margin:0;font-size:28px;line-height:1.2} .sub{margin-top:8px;color:var(--muted);font-size:14px;line-height:1.6}
+    a{color:var(--accent);text-decoration:none}
+    main{padding:20px}.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden;box-shadow:0 6px 24px rgba(18,24,40,.06)}
+    .head{padding:16px 16px 12px;border-bottom:1px solid var(--line)} .meta{color:var(--muted);font-size:13px}
+    .body{padding:16px;color:var(--muted);font-size:14px;line-height:1.75}
+    .tag{display:inline-flex;align-items:center;padding:4px 10px;border-radius:999px;background:#eef3ff;color:var(--accent);font-size:12px;font-weight:600}
+    .row{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+    footer{padding:16px 20px 32px;color:var(--muted);font-size:12px;text-align:center}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>MMO 项目</h1>
+      <div class="sub"><a href="index.html">返回目录</a> · 当前保留正式入口，视频补齐后可直接挂载到这里。</div>
+    </div>
+  </header>
+  <main class="wrap">
+    <section class="card">
+      <div class="head">
+        <div class="meta">核心项目 / 面试优先展示</div>
+      </div>
+      <video controls preload="metadata" playsinline src="assets/videos/MMO/MMO.mp4"></video>
+      <div class="body">
+        <p>MMO 项目演示视频。这个页面以后就固定作为该项目的展示入口。</p>
+        <div class="row">
+          <span class="tag">MMO</span>
+          <span class="tag">核心项目</span>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>作品集视频页</footer>
+</body>
+</html>

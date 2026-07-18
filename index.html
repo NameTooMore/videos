@@ -3,16 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>作品集视频</title>
+  <title>作品集视频目录</title>
   <style>
     :root {
-      --bg: #f4f5f7;
-      --panel: #ffffff;
-      --text: #17181c;
-      --muted: #6d7380;
-      --line: #d9dde3;
-      --accent: #2457ff;
-      --accent-2: #0d7a5f;
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --line: #e6e6e6;
+      --link: #1f5eff;
     }
     * { box-sizing: border-box; }
     body {
@@ -21,145 +19,99 @@
       background: var(--bg);
       color: var(--text);
     }
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 2;
-      background: linear-gradient(180deg, #fff 0%, #f8f9fb 100%);
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .sub {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .section {
+      margin-top: 28px;
+    }
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #222;
+    }
+    .list {
+      border-top: 1px solid var(--line);
+    }
+    a.item {
+      display: block;
+      padding: 14px 0;
       border-bottom: 1px solid var(--line);
-      padding: 28px 20px 16px;
+      text-decoration: none;
+      color: var(--text);
     }
-    .wrap { max-width: 1180px; margin: 0 auto; }
-    h1 { margin: 0; font-size: 28px; line-height: 1.2; }
-    .sub { margin-top: 8px; color: var(--muted); font-size: 14px; }
-    main { padding: 20px; }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 16px;
+    a.item:hover .name {
+      color: var(--link);
     }
-    .card {
-      background: var(--panel);
-      border: 1px solid var(--line);
-      border-radius: 8px;
-      overflow: hidden;
-      box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    .name {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.35;
     }
-    .card-head { padding: 14px 14px 10px; border-bottom: 1px solid var(--line); }
-    .title { margin: 0; font-size: 16px; line-height: 1.35; }
-    .meta {
-      margin-top: 6px;
+    .desc {
+      margin-top: 4px;
       color: var(--muted);
       font-size: 13px;
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      align-items: center;
+      line-height: 1.5;
     }
-    video {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 9;
-      background: #000;
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 12px;
     }
-    .note { padding: 10px 14px 14px; color: var(--muted); font-size: 13px; line-height: 1.55; }
-    .tag, .linktag {
-      display: inline-flex;
-      align-items: center;
-      padding: 3px 8px;
-      border-radius: 999px;
-      background: #eef3ff;
-      color: var(--accent);
-      text-decoration: none;
-    }
-    .tag.green { background: #ecf8f3; color: var(--accent-2); }
-    .linktag:hover { background: #e2e9ff; }
-    footer { padding: 16px 20px 32px; color: var(--muted); font-size: 12px; text-align: center; }
   </style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <h1>作品集视频</h1>
-      <div class="sub">静态页直连播放，适合 Gitee Pages / GitHub Pages。</div>
-    </div>
-  </header>
-
   <main class="wrap">
-    <div class="grid" id="grid"></div>
+    <h1>作品集视频目录</h1>
+    <div class="sub">点击进入对应项目页面。Shader 相关放在一起，其余项目单独页面。</div>
+
+    <section class="section">
+      <h2>项目页面</h2>
+      <div class="list">
+        <a class="item" href="mmo.html">
+          <div class="name">MMO 项目</div>
+          <div class="desc">核心项目演示页</div>
+        </a>
+        <a class="item" href="editor.html">
+          <div class="name">编辑器</div>
+          <div class="desc">单独视频页</div>
+        </a>
+        <a class="item" href="lua-hot-update.html">
+          <div class="name">Lua 热更</div>
+          <div class="desc">单独视频页</div>
+        </a>
+        <a class="item" href="2d-demo.html">
+          <div class="name">横板 2D Demo</div>
+          <div class="desc">单独视频页</div>
+        </a>
+        <a class="item" href="cat.html">
+          <div class="name">小猫</div>
+          <div class="desc">单独视频页</div>
+        </a>
+        <a class="item" href="shaders.html">
+          <div class="name">Shader 相关合集</div>
+          <div class="desc">边缘光、草地、海洋、玻璃、体积云、computerShader 草地</div>
+        </a>
+      </div>
+    </section>
+
+    <footer>作品集视频站点</footer>
   </main>
-
-  <footer>仓库根目录直接部署即可，入口文件为 `index.html`。</footer>
-
-  <script>
-    const videos = [
-      { title: "编辑器", file: "assets/videos/编辑器/编辑器.mp4", tag: "工具" },
-      { title: "横板2D Demo", file: "assets/videos/横板2D/2Ddemo.mp4", tag: "玩法" },
-      { title: "小猫", file: "assets/videos/小猫/cat.mp4", tag: "演示" },
-      { title: "Lua 热更", file: "assets/videos/Lua热更/热更演示.mp4", tag: "热更新" },
-      { title: "边缘光", file: "assets/videos/Shader/边缘光.mp4", tag: "Shader" },
-      { title: "草地 Shader", file: "assets/videos/Shader/草地shader.mp4", tag: "Shader" },
-      { title: "海洋 Shader", file: "assets/videos/Shader/海洋shader.mp4", tag: "Shader" },
-      { title: "挂满水滴的玻璃", file: "assets/videos/Shader/挂满水滴的玻璃.mp4", tag: "材质" },
-      { title: "体积云", file: "assets/videos/Shader/体积云.mp4", tag: "渲染" },
-      { title: "computerShader 草地", file: "assets/videos/Shader/computerShader草地.mp4", tag: "Compute" }
-    ];
-
-    const grid = document.getElementById("grid");
-
-    const slugify = (value) => value
-      .toLowerCase()
-      .replace(/\s+/g, "-")
-      .replace(/[^\w\u4e00-\u9fa5-]/g, "");
-
-    const prettySize = async (url) => {
-      try {
-        const r = await fetch(encodeURI(url), { method: "HEAD" });
-        const len = r.headers.get("content-length");
-        if (!len) return "";
-        return `${(Number(len) / 1024 / 1024).toFixed(1)} MB`;
-      } catch {
-        return "";
-      }
-    };
-
-    (async () => {
-      for (const [index, item] of videos.entries()) {
-        const card = document.createElement("section");
-        card.className = "card";
-        const key = `${slugify(item.title)}-${index + 1}`;
-        card.id = key;
-        const size = await prettySize(item.file);
-        card.innerHTML = `
-          <div class="card-head">
-            <h2 class="title">${item.title}</h2>
-            <div class="meta">
-              <span class="tag">${item.tag}</span>
-              ${size ? `<span class="tag green">${size}</span>` : ""}
-              <a class="linktag" href="?video=${encodeURIComponent(key)}">直达链接</a>
-            </div>
-          </div>
-          <video controls preload="metadata" playsinline src="${encodeURI(item.file)}"></video>
-          <div class="note">可直接在线播放，也可右键下载保存本地。</div>
-        `;
-        grid.appendChild(card);
-      }
-
-      const params = new URLSearchParams(location.search);
-      const target = params.get("video") || location.hash.replace(/^#/, "");
-      if (target) {
-        const el = document.getElementById(target);
-        if (el) {
-          el.scrollIntoView({ behavior: "smooth", block: "start" });
-          el.style.outline = "2px solid #2457ff";
-          el.style.outlineOffset = "2px";
-          const vid = el.querySelector("video");
-          if (vid) {
-            try { await vid.play(); } catch {}
-          }
-        }
-      }
-    })();
-  </script>
 </body>
 </html>
