@@ -3,71 +3,115 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Shader 合集</title>
+  <title>Shader 目录</title>
   <style>
-    :root { --bg:#f4f5f7; --panel:#fff; --text:#17181c; --muted:#6d7380; --line:#d9dde3; --accent:#2457ff; --accent-2:#0d7a5f; }
-    *{box-sizing:border-box} body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text)}
-    header{padding:24px 20px;border-bottom:1px solid var(--line);background:linear-gradient(180deg,#fff 0%,#f8f9fb 100%)} .wrap{max-width:1180px;margin:0 auto}
-    a{color:var(--accent);text-decoration:none} h1{margin:0;font-size:28px} .sub{margin-top:8px;color:var(--muted);font-size:14px}
-    main{padding:20px}.group{margin-bottom:18px;padding:16px;background:var(--panel);border:1px solid var(--line);border-radius:8px}
-    .group h2{margin:0 0 12px;font-size:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
-    .card{background:var(--panel);border:1px solid var(--line);border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,.03)}
-    .head{padding:14px 14px 10px;border-bottom:1px solid var(--line)} .title{margin:0;font-size:16px;line-height:1.35}
-    .meta{margin-top:6px;color:var(--muted);font-size:13px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-    .tag,.linktag{display:inline-flex;align-items:center;padding:3px 8px;border-radius:999px;background:#eef3ff;color:var(--accent);text-decoration:none}
-    .tag.green{background:#ecf8f3;color:var(--accent-2)} .linktag:hover{background:#e2e9ff}
-    video{display:block;width:100%;aspect-ratio:16/9;background:#000}.note{padding:10px 14px 14px;color:var(--muted);font-size:13px;line-height:1.55}
-    footer{padding:16px 20px 32px;color:var(--muted);font-size:12px;text-align:center}
+    :root {
+      --bg: #ffffff;
+      --text: #111111;
+      --muted: #666666;
+      --line: #e6e6e6;
+      --link: #1f5eff;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    .wrap {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 32px 20px 48px;
+    }
+    h1 {
+      margin: 0;
+      font-size: 28px;
+      line-height: 1.2;
+      font-weight: 700;
+    }
+    .sub {
+      margin-top: 10px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .section {
+      margin-top: 28px;
+    }
+    .section h2 {
+      margin: 0 0 12px;
+      font-size: 16px;
+      font-weight: 600;
+      color: #222;
+    }
+    .list {
+      border-top: 1px solid var(--line);
+    }
+    a.item {
+      display: block;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--line);
+      text-decoration: none;
+      color: var(--text);
+    }
+    a.item:hover .name {
+      color: var(--link);
+    }
+    .name {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 1.35;
+    }
+    .desc {
+      margin-top: 4px;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.5;
+    }
+    footer {
+      margin-top: 28px;
+      color: var(--muted);
+      font-size: 12px;
+    }
   </style>
 </head>
 <body>
-  <header><div class="wrap"><h1>Shader 合集</h1><div class="sub"><a href="index.html">返回目录</a></div></div></header>
   <main class="wrap">
-    <section class="group">
-      <h2>Shader / 渲染</h2>
-      <div class="grid" id="grid"></div>
+    <h1>Shader 目录</h1>
+    <div class="sub">先选项目，再进入单独视频页。这样不会一次性加载全部 Shader 视频。</div>
+
+    <section class="section">
+      <h2>Shader 页面</h2>
+      <div class="list">
+        <a class="item" href="shader-edge-light.html">
+          <div class="name">边缘光</div>
+          <div class="desc">单独页面</div>
+        </a>
+        <a class="item" href="shader-grass.html">
+          <div class="name">草地 Shader</div>
+          <div class="desc">单独页面</div>
+        </a>
+        <a class="item" href="shader-ocean.html">
+          <div class="name">海洋 Shader</div>
+          <div class="desc">单独页面</div>
+        </a>
+        <a class="item" href="shader-glass-water.html">
+          <div class="name">挂满水滴的玻璃</div>
+          <div class="desc">单独页面</div>
+        </a>
+        <a class="item" href="shader-volumetric-cloud.html">
+          <div class="name">体积云</div>
+          <div class="desc">单独页面</div>
+        </a>
+        <a class="item" href="shader-compute-grass.html">
+          <div class="name">computerShader 草地</div>
+          <div class="desc">单独页面</div>
+        </a>
+      </div>
     </section>
+
+    <footer><a href="index.html">返回目录</a></footer>
   </main>
-  <footer>Shader 相关集中在这一页。</footer>
-  <script>
-    const items = [
-      { title: "边缘光", file: "assets/videos/Shader/边缘光.mp4", tag: "Shader" },
-      { title: "草地 Shader", file: "assets/videos/Shader/草地shader.mp4", tag: "Shader" },
-      { title: "海洋 Shader", file: "assets/videos/Shader/海洋shader.mp4", tag: "Shader" },
-      { title: "挂满水滴的玻璃", file: "assets/videos/Shader/挂满水滴的玻璃.mp4", tag: "材质" },
-      { title: "体积云", file: "assets/videos/Shader/体积云.mp4", tag: "渲染" },
-      { title: "computerShader 草地", file: "assets/videos/Shader/computerShader草地.mp4", tag: "Compute" }
-    ];
-    const grid = document.getElementById("grid");
-    const slugify = (value) => value.toLowerCase().replace(/\s+/g,"-").replace(/[^\w\u4e00-\u9fa5-]/g,"");
-    const prettySize = async (url) => { try { const r = await fetch(encodeURI(url), { method: "HEAD" }); const len = r.headers.get("content-length"); if (!len) return ""; return `${(Number(len)/1024/1024).toFixed(1)} MB`; } catch { return ""; } };
-    (async () => {
-      for (const [index, item] of items.entries()) {
-        const key = `${slugify(item.title)}-${index + 1}`;
-        const size = await prettySize(item.file);
-        const card = document.createElement("section");
-        card.className = "card";
-        card.id = key;
-        card.innerHTML = `
-          <div class="head">
-            <h3 class="title">${item.title}</h3>
-            <div class="meta">
-              <span class="tag">${item.tag}</span>
-              ${size ? `<span class="tag green">${size}</span>` : ""}
-              <a class="linktag" href="#${encodeURIComponent(key)}">直达链接</a>
-            </div>
-          </div>
-          <video controls preload="metadata" playsinline src="${encodeURI(item.file)}"></video>
-          <div class="note">可直接在线播放，也可右键下载保存本地。</div>
-        `;
-        grid.appendChild(card);
-      }
-      const target = new URLSearchParams(location.search).get("video") || location.hash.replace(/^#/, "");
-      if (target) {
-        const el = document.getElementById(target);
-        if (el) { el.scrollIntoView({ behavior: "smooth", block: "start" }); try { await el.querySelector("video")?.play(); } catch {} }
-      }
-    })();
-  </script>
 </body>
 </html>
