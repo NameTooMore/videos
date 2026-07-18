@@ -54,6 +54,7 @@
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
+      align-items: center;
     }
     video {
       display: block;
@@ -62,15 +63,17 @@
       background: #000;
     }
     .note { padding: 10px 14px 14px; color: var(--muted); font-size: 13px; line-height: 1.55; }
-    .tag {
+    .tag, .linktag {
       display: inline-flex;
       align-items: center;
       padding: 3px 8px;
       border-radius: 999px;
       background: #eef3ff;
       color: var(--accent);
+      text-decoration: none;
     }
     .tag.green { background: #ecf8f3; color: var(--accent-2); }
+    .linktag:hover { background: #e2e9ff; }
     footer { padding: 16px 20px 32px; color: var(--muted); font-size: 12px; text-align: center; }
   </style>
 </head>
@@ -81,10 +84,13 @@
       <div class="sub">静态页直连播放，适合 Gitee Pages / GitHub Pages。</div>
     </div>
   </header>
+
   <main class="wrap">
     <div class="grid" id="grid"></div>
   </main>
+
   <footer>仓库根目录直接部署即可，入口文件为 `index.html`。</footer>
+
   <script>
     const videos = [
       { title: "编辑器", file: "assets/videos/编辑器/编辑器.mp4", tag: "工具" },
@@ -101,6 +107,11 @@
 
     const grid = document.getElementById("grid");
 
+    const slugify = (value) => value
+      .toLowerCase()
+      .replace(/\s+/g, "-")
+      .replace(/[^\w\u4e00-\u9fa5-]/g, "");
+
     const prettySize = async (url) => {
       try {
         const r = await fetch(encodeURI(url), { method: "HEAD" });
@@ -113,9 +124,11 @@
     };
 
     (async () => {
-      for (const item of videos) {
+      for (const [index, item] of videos.entries()) {
         const card = document.createElement("section");
         card.className = "card";
+        const key = `${slugify(item.title)}-${index + 1}`;
+        card.id = key;
         const size = await prettySize(item.file);
         card.innerHTML = `
           <div class="card-head">
@@ -123,12 +136,28 @@
             <div class="meta">
               <span class="tag">${item.tag}</span>
               ${size ? `<span class="tag green">${size}</span>` : ""}
+              <a class="linktag" href="?video=${encodeURIComponent(key)}">直达链接</a>
             </div>
           </div>
           <video controls preload="metadata" playsinline src="${encodeURI(item.file)}"></video>
           <div class="note">可直接在线播放，也可右键下载保存本地。</div>
         `;
         grid.appendChild(card);
+      }
+
+      const params = new URLSearchParams(location.search);
+      const target = params.get("video") || location.hash.replace(/^#/, "");
+      if (target) {
+        const el = document.getElementById(target);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth", block: "start" });
+          el.style.outline = "2px solid #2457ff";
+          el.style.outlineOffset = "2px";
+          const vid = el.querySelector("video");
+          if (vid) {
+            try { await vid.play(); } catch {}
+          }
+        }
       }
     })();
   </script>
