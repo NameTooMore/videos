@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>作品集视频</title>
+  <style>
+    :root {
+      --bg: #f4f5f7;
+      --panel: #ffffff;
+      --text: #17181c;
+      --muted: #6d7380;
+      --line: #d9dde3;
+      --accent: #2457ff;
+      --accent-2: #0d7a5f;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      background: linear-gradient(180deg, #fff 0%, #f8f9fb 100%);
+      border-bottom: 1px solid var(--line);
+      padding: 28px 20px 16px;
+    }
+    .wrap { max-width: 1180px; margin: 0 auto; }
+    h1 { margin: 0; font-size: 28px; line-height: 1.2; }
+    .sub { margin-top: 8px; color: var(--muted); font-size: 14px; }
+    main { padding: 20px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 1px 2px rgba(0,0,0,.03);
+    }
+    .card-head { padding: 14px 14px 10px; border-bottom: 1px solid var(--line); }
+    .title { margin: 0; font-size: 16px; line-height: 1.35; }
+    .meta {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+    video {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      background: #000;
+    }
+    .note { padding: 10px 14px 14px; color: var(--muted); font-size: 13px; line-height: 1.55; }
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: #eef3ff;
+      color: var(--accent);
+    }
+    .tag.green { background: #ecf8f3; color: var(--accent-2); }
+    footer { padding: 16px 20px 32px; color: var(--muted); font-size: 12px; text-align: center; }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <h1>作品集视频</h1>
+      <div class="sub">静态页直连播放，适合 Gitee Pages / GitHub Pages。</div>
+    </div>
+  </header>
+  <main class="wrap">
+    <div class="grid" id="grid"></div>
+  </main>
+  <footer>仓库根目录直接部署即可，入口文件为 `index.html`。</footer>
+  <script>
+    const videos = [
+      { title: "编辑器", file: "assets/videos/编辑器/编辑器.mp4", tag: "工具" },
+      { title: "横板2D Demo", file: "assets/videos/横板2D/2Ddemo.mp4", tag: "玩法" },
+      { title: "小猫", file: "assets/videos/小猫/cat.mp4", tag: "演示" },
+      { title: "Lua 热更", file: "assets/videos/Lua热更/热更演示.mp4", tag: "热更新" },
+      { title: "边缘光", file: "assets/videos/Shader/边缘光.mp4", tag: "Shader" },
+      { title: "草地 Shader", file: "assets/videos/Shader/草地shader.mp4", tag: "Shader" },
+      { title: "海洋 Shader", file: "assets/videos/Shader/海洋shader.mp4", tag: "Shader" },
+      { title: "挂满水滴的玻璃", file: "assets/videos/Shader/挂满水滴的玻璃.mp4", tag: "材质" },
+      { title: "体积云", file: "assets/videos/Shader/体积云.mp4", tag: "渲染" },
+      { title: "computerShader 草地", file: "assets/videos/Shader/computerShader草地.mp4", tag: "Compute" }
+    ];
+
+    const grid = document.getElementById("grid");
+
+    const prettySize = async (url) => {
+      try {
+        const r = await fetch(encodeURI(url), { method: "HEAD" });
+        const len = r.headers.get("content-length");
+        if (!len) return "";
+        return `${(Number(len) / 1024 / 1024).toFixed(1)} MB`;
+      } catch {
+        return "";
+      }
+    };
+
+    (async () => {
+      for (const item of videos) {
+        const card = document.createElement("section");
+        card.className = "card";
+        const size = await prettySize(item.file);
+        card.innerHTML = `
+          <div class="card-head">
+            <h2 class="title">${item.title}</h2>
+            <div class="meta">
+              <span class="tag">${item.tag}</span>
+              ${size ? `<span class="tag green">${size}</span>` : ""}
+            </div>
+          </div>
+          <video controls preload="metadata" playsinline src="${encodeURI(item.file)}"></video>
+          <div class="note">可直接在线播放，也可右键下载保存本地。</div>
+        `;
+        grid.appendChild(card);
+      }
+    })();
+  </script>
+</body>
+</html>
